@@ -93,6 +93,7 @@ public class Main
 		else
 		{ 
 			//No piece in the specified position
+			System.out.println("ERROR: No piece in the specified position!");
 			
 		}
 		
@@ -112,13 +113,9 @@ public class Main
 		}
 	}//CheckmoveInput
 	
-	public static void makeMove(int currentR, int currentC, int distinationR, int distinationC)
+	public static void makeMove(int currentR, int currentC, int distinationR, int distinationC,String color)
 	{
-		/*
-		 * 
-		 * 
-		 * 
-		 * */
+		/*A) Check if there is a piece of the correct color at the specified current location. */
 		
 	}
 	
@@ -143,12 +140,55 @@ public class Main
 		return validity;
 	}
 	
+	public static String getPieceColor(int row, int column)
+	{
+		String pieceColor = "";//result 
+		String[] piece;
+		
+		if(isPiece(row,column))
+		{
+			//if there is a piece, then get the piece of color
+			piece = board[row][column].split(":");
+			
+			System.out.println(piece[1]);//show color of piece
+			pieceColor = piece[1];
+		}
+		else
+		{
+			System.out.println("ERROR: getPieceColor");
+			System.out.println("No piece in the specified position!");
+		}
+		return pieceColor;
+	}
+	public static String getPieceName(int row, int column)
+	{
+		String pieceName = "";
+		String[] piece;
+		if(isPiece(row, column))
+		{
+			piece = board[row][column].split(":");
+			System.out.println(piece[0]);//show name of piece 
+			pieceName = piece[0];
+			
+		}
+		else
+		{
+			System.out.println("ERROR: getPieceName");
+			System.out.println("No piece in the specified position!");
+		}
+		return pieceName;
+	}
 	public static void main(String[] args)
 	{
 		Scanner scan = new Scanner(System.in);
 		//System.out.println("Chose your chess color from black or white");
 		//player_color = scan.next();
 		init(player_color);
-		System.out.println(isPiece(2,0));
+		System.out.println(isPiece(0,0));
+		System.out.println("piece color");
+		getPieceColor(0,0);
+		System.out.println("piece name");
+		getPieceName(5,3);
+		
 	}
 }
