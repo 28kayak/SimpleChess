@@ -5,6 +5,8 @@ public class Main
 	static String player_color; 
 	static String chessman;
 	static String emptySpace = "x:x ";
+	static String white = "W ";
+	static String black = "B ";
 	
 	public static void init(String color)
 	{
@@ -127,7 +129,8 @@ public class Main
 		if(emptySpace.equalsIgnoreCase(board[currentRow][currentColumn]))
 		{
 			//there is no piece at the specified area 
-			System.out.println("Invalid Current Position");
+			System.out.println("ERROR: isPiece");
+			System.out.println("no peice at the specified position");
 			validity = false;
 			
 		}
@@ -138,7 +141,7 @@ public class Main
 	
 		
 		return validity;
-	}
+	}//isPiece
 	
 	public static String getPieceColor(int row, int column)
 	{
@@ -159,7 +162,7 @@ public class Main
 			System.out.println("No piece in the specified position!");
 		}
 		return pieceColor;
-	}
+	}//getPieceColor
 	public static String getPieceName(int row, int column)
 	{
 		String pieceName = "";
@@ -177,7 +180,36 @@ public class Main
 			System.out.println("No piece in the specified position!");
 		}
 		return pieceName;
+	}//getPieceName
+	
+	/*move each type of pieces*/
+	public static void moveKing()
+	{
+		
 	}
+	public static void movePawn(int currentR, int currentC,int destinationR, int destinationC)
+	{
+		String color = getPieceColor(currentR,currentC);
+		//check if required destination is equal to valid move of pawn
+		if(color.equalsIgnoreCase(white))
+		{//move for white pawn
+			if((currentR - 1) == destinationR && currentC == destinationC)
+			{//request is valid 
+				board[currentR][currentC] = emptySpace;
+				board[destinationR][destinationC] = "P:W ";
+			}
+			else
+			{
+				System.out.println("ERROR: movePawn");
+				System.out.println("Invalid destination");
+			}
+		}
+		
+		
+		
+	}
+	
+	
 	public static void main(String[] args)
 	{
 		Scanner scan = new Scanner(System.in);
@@ -188,7 +220,9 @@ public class Main
 		System.out.println("piece color");
 		getPieceColor(0,0);
 		System.out.println("piece name");
-		getPieceName(5,3);
-		
+		getPieceName(6,3);
+		movePawn(6,3, 5,3);
+		display();
+		movePawn(6,5, 4,3);
 	}
 }
