@@ -82,33 +82,20 @@ public class Main
 		int currentColumn = scan.nextInt();
 		if(isPiece(currentRow, currentColumn))
 		{
+			//Yes, there is some piece
+			//So, ask where to move the piece
+			System.out.println("Enter a move for the row");
+			int row_move = scan.nextInt();
+			System.out.println("Enter a move for the column");
+			int column_move = scan.nextInt();
 			
 		}
 		else
-		{
+		{ 
+			//No piece in the specified position
 			
 		}
 		
-		
-		
-		System.out.println("Enter a move for the row");
-		int row_move = scan.nextInt();
-		System.out.println("Enter a move for the column");
-		int column_move = scan.nextInt();
-		
-		if(0 <= row_move  && 8 < row_move)
-		{
-			//row is ok to move
-			if(0 <= column_move  && 8 < column_move )
-			{//column is ok to move
-				move_validity = true;
-			}//if-column_move
-			else
-			{
-				move_validity = false;
-			}
-			
-		}//if-row_move
 		
 		
 		if(move_validity && current_validity)
@@ -125,7 +112,7 @@ public class Main
 		}
 	}//CheckmoveInput
 	
-	public static void makeMove()
+	public static void makeMove(int currentR, int currentC, int distinationR, int distinationC)
 	{
 		/*
 		 * 
