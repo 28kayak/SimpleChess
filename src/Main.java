@@ -462,17 +462,32 @@ public class Main
 	{
 		//The bishop can move any number of squares diagonally.
 		String color = getPieceColor(currentR,currentC);
+		int diffR = destinationR - currentR;
+		int diffC = destinationC - currentC;
 		if(color.equalsIgnoreCase(white))
 		{
+			if(diffR == diffC)
+			{
+				//ok to move
+				board[currentR][currentC] = emptySpace;
+				board[destinationR][destinationC] = "B:W ";
+				
+			}
 			
 		}
 		else if(color.equalsIgnoreCase(black))
 		{
-			
+			if(diffR == diffC)
+			{
+				//ok to move
+				board[currentR][currentC] = emptySpace;
+				board[destinationR][destinationC] = "B:W ";
+				
+			}
 		}
 		else
 		{
-			
+			System.out.println("Fetal Error: dead code");
 		}
 		
 	}//moveBishop
